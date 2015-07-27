@@ -54,6 +54,23 @@ var file = fs.readFile('test.css', function (err, data) {
 });
 ```
 
+Use the `report` method to return formatted results in CLI:
+
+```js
+var Parker = require(‘parker/lib/Parker’);
+var metrics = require(‘parker/metrics/All’); // Or an array of the metrics you want to measure
+
+var file = fs.readFile(‘test.css’, function (err, data) {
+	if (err) throw err;
+
+	var parker = new Parker(metrics);
+	parker.report(data.toString());
+});
+```
+
+Output should look like this:
+![A screenshot of CLI output](cli-screenshot.png)
+
 ## Documentation
 
 Documentation can be found in markdown format the [docs folder](https://github.com/katiefenn/parker/tree/master/docs).
